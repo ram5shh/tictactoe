@@ -1,0 +1,47 @@
+body{
+    background-color: lightcoral;
+}
+.pageTitle{
+    text-align:center;
+    font-family: Helvetica;
+}
+
+.gameboard_main{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.gameboard_box{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.row1, 
+.row2,
+.row3{
+    display: flex;
+    width: 300px;
+    max-width:300px;
+    gap:5px;
+}
+
+button[item-type='box']{
+    height: 100px;
+    width: 100px;
+}
+
+.footer {
+    display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(59, 95, 212);
+    color: blanchedalmond;
+    justify-content: center;
+    align-self: flex-end;
+    margin-top: 50px;
+    font-family: Helvetica;
+  }
