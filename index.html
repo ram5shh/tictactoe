@@ -13,34 +13,42 @@
 <body>
     <h1 class="pageTitle">TIC TAC TOE </h1>
     <hr style="height:5px;border-width:0;color:gray;background-color:gray">
-    
-    <div class="player1" item-type="player-score">PLAYER 1:</div>
-    <div class="player2" item-type="player-score">PLAYER 2:</div>
 
-    <div class="reset">
-        <button id="reset" class="reset">Restart Game</button>
-    </div>    
+    <div class="scoreboard">
+        <div class="player1" item-type="player-score">PLAYER 1:
+            <span id="player1GamesWon">0</span>
+        </div>
+        <div class="player2" item-type="player-score">PLAYER 2:
+            <span id="player2GamesWon">0</span>
+        </div>
+    </div>
 
-    <div class="gameboard_main"> 
+
+    <div class="gameboard_main">
         <div class="gameboard_box">
             <div class="row1">
-                <button id ="game-button" class="1" item-type="box"></button>
-                <button id ="game-button" class="2" item-type="box"></button>
-                <button id ="game-button" class="3" item-type="box"></button>
+                <button id="game-button" class="1" item-type="box"></button>
+                <button id="game-button" class="2" item-type="box"></button>
+                <button id="game-button" class="3" item-type="box"></button>
             </div>
             <div class="row2">
-                <button id ="game-button" class="4" item-type="box"></button>
-                <button id ="game-button" class="5" item-type="box"></button>
-                <button id ="game-button" class="6" item-type="box"></button>
+                <button id="game-button" class="4" item-type="box"></button>
+                <button id="game-button" class="5" item-type="box"></button>
+                <button id="game-button" class="6" item-type="box"></button>
             </div>
             <div class="row3">
-                <button id ="game-button" class="7" item-type="box"></button>
-                <button id ="game-button" class="8" item-type="box"></button>
-                <button id ="game-button" class="9" item-type="box"></button>
+                <button id="game-button" class="7" item-type="box"></button>
+                <button id="game-button" class="8" item-type="box"></button>
+                <button id="game-button" class="9" item-type="box"></button>
             </div>
         </div>
     </div>
-    
+
+    <div class="reset">
+        <button id="resetgame" class="resetgame">Restart Game</button>
+        <button id="resetround" class="resetround">Restart Round</button>
+    </div>
+
     <div class="footer">
         <p><a href="https://github.com/ram5shh/tictactoe" target="_blank">Github</a> | The Odin Project </p>
     </div>
