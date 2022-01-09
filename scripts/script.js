@@ -139,8 +139,9 @@ function checkIfWon(playerScoreArray) {
 }
 
 
-window.addEventListener('click', (event) => {
-    if (event.path[0].id == `game-button`) {
+window.addEventListener('click', function(event) {
+    console.log(event);
+    if (event.target.id === "game-button") {
         //player plays
         if (mainModule.getCurrentPlayer() == "1" && event.target.innerText == '') {
             event.target.innerText = "X";
