@@ -1,4 +1,14 @@
 const mainModule = (function () {
+    const _gameBoardButton = document.querySelectorAll(`#game-button`);
+    let _player1Score = [[0], []]; //1st is total score, 2nd is boxes clicked in current round
+    let _player2Score = [[0], []]; //1st is total score, 2nd is boxes clicked in current round
+    const _winningPatterns = [[1, 2, 3], [1, 4, 7], [7, 8, 9], [3, 6, 9], [2, 5, 8], [1, 5, 9], [3, 5, 7], [4, 5, 6]];
+
+    let _currPlayer = "1";
+
+    const player1ScoreBoard = document.querySelector('.player1 span');
+    const player2ScoreBoard = document.querySelector('.player2 span');
+
 
     const restartRoundButton = document.querySelector("button.resetround");
     restartRoundButton.addEventListener('click', () => {
@@ -15,18 +25,6 @@ const mainModule = (function () {
             restartGame();
         }
     });
-
-
-    const _gameBoardButton = document.querySelectorAll(`#game-button`);
-    let _player1Score = [[0], []]; //1st is total score, 2nd is boxes clicked in current round
-    let _player2Score = [[0], []]; //1st is total score, 2nd is boxes clicked in current round
-    const _winningPatterns = [[1, 2, 3], [1, 4, 7], [7, 8, 9], [3, 6, 9], [2, 5, 8], [1, 5, 9], [3, 5, 7], [4, 5, 6]];
-
-    let _currPlayer = "1";
-
-    const player1ScoreBoard = document.querySelector('.player1 span');
-    const player2ScoreBoard = document.querySelector('.player2 span');
-
 
     const getGameBoardButton = () => {
         return _gameBoardButton;
@@ -77,7 +75,6 @@ const mainModule = (function () {
         renderScore();
     }
 
-
     const addToPlayerScore = (score) => {
         if (getCurrentPlayer() == "1") {
             _player1Score[1].push(score);
@@ -114,8 +111,6 @@ const mainModule = (function () {
     }
 })();
 
-// mainModule.renderScore();
-
 function checkIfWon(playerScoreArray) {
     //return true if player has winning pattern
     let matchingNumbers = 0;
@@ -139,23 +134,23 @@ function checkIfWon(playerScoreArray) {
 }
 
 
-window.addEventListener('click', function(event) {
-    console.log(event);
+window.addEventListener('click', function (event) {
     if (event.target.id === "game-button") {
         //player plays
         if (mainModule.getCurrentPlayer() == "1" && event.target.innerText == '') {
             event.target.innerText = "X";
             event.target.setAttribute("style", "font-size:50px");
             mainModule.addToPlayerScore(+event.target.classList.value);
+            // computerCannotPick.push(+event.target.classList.value); //also push to computer cannot pick
 
 
-            if (checkIfWon(mainModule.getPlayer1Score())) { //player1 won the round
+            if (checkIfWon(mainModule.getPlayer1Score())) { //player1 won the round. end round.
                 mainModule.updateGamesWon(mainModule.getCurrentPlayer());
                 setTimeout(function () { alert("WINNER: PLAYER 1!"); }, 250);
                 setTimeout(function () { mainModule.restartRound(); }, 1000);
                 mainModule.renderScore();
                 return;
-            } else {
+            } else { //nobody has won yet. game continues. Switch player
                 mainModule.changePlayer();
             }
         }
@@ -165,16 +160,17 @@ window.addEventListener('click', function(event) {
             event.target.setAttribute("style", "font-size:50px");
             mainModule.addToPlayerScore(+event.target.classList.value);
 
-            if (checkIfWon(mainModule.getPlayer2Score())) { //player2 won the round
+            if (checkIfWon(mainModule.getPlayer2Score())) { //player2 won the round. end round.
                 mainModule.updateGamesWon(mainModule.getCurrentPlayer());
                 setTimeout(function () { alert("WINNER: PLAYER 2!"); }, 250);
                 setTimeout(function () { mainModule.restartRound(); }, 1000);
                 mainModule.renderScore();
                 return;
-            } else {
+            } else {//nobody has won yet. game continues. Switch player
                 mainModule.changePlayer();
             }
         }
     }
 }
 );
+
