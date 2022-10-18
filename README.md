@@ -4,4 +4,4 @@ Tictactoe game buit as past of ODIN JS tutorial. Lessons learnt are,
 - Module Pattern
 - DOM manipulation
 
-Page - https://ram5shh.github.io/TicTacToe/
+Page - https://rameshraman86.github.io/TicTacToe/
